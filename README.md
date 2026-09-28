@@ -55,6 +55,15 @@ docker compose up --build
 
 Frontend on :5173, backend on :4000.
 
+## GitHub Pages frontend
+
+The frontend deploys automatically with `.github/workflows/deploy-pages.yml`.
+Enable **Settings > Pages > Source: GitHub Actions** in the repository. The
+published site is `https://ajjubhandari.github.io/PGNR/`.
+
+Set repository variables named `VITE_API_URL` and `VITE_WS_URL` when the backend
+URL is known. The workflow defaults to the current Render backend URL.
+
 ## Hosting files
 
 - `render.yaml` defines the backend Web Service and frontend Static Site for Render.
