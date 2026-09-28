@@ -30,7 +30,7 @@ services:
       - key: OPENAI_API_KEY
         sync: false
 
-  - type: static_site
+  - type: static
     name: pgnr-dashboard
     rootDir: client
     plan: free
