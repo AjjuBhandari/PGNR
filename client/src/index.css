@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { overflow: hidden; }
+
+.slot {
+  @apply relative w-full h-auto aspect-square min-w-0 bg-[#1a1c20] border-2 rounded-sm flex items-center justify-center text-[9px] sm:text-[10px] cursor-pointer select-none;
+  border-color: #3a3f48 #14161a #14161a #3a3f48;
+}
+.slot:hover { @apply outline outline-2 outline-white/40; }
+.slot-empty {
+  background-image: linear-gradient(45deg, #22252b 25%, transparent 25%, transparent 75%, #22252b 75%),
+    linear-gradient(45deg, #22252b 25%, transparent 25%, transparent 75%, #22252b 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  background-color: #1a1c20;
+}
+.slot-enchanted { box-shadow: 0 0 6px 1px rgba(170, 0, 170, 0.6) inset; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #2c3038; border-radius: 4px; }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium bg-[#262930] border border-mc-border hover:bg-[#2f333c] transition-colors;
+  }
+  .btn-primary { @apply bg-mc-green/20 border-mc-green/40 text-mc-green hover:bg-mc-green/30; }
+  .btn-danger { @apply bg-mc-red/20 border-mc-red/40 text-mc-red hover:bg-mc-red/30; }
+  .tab { @apply px-3 py-2 text-xs font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 cursor-pointer; }
+  .tab-active { @apply border-mc-green text-slate-50; }
+}
