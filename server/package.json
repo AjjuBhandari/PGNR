@@ -2,6 +2,9 @@
   "name": "mc-bot-dashboard-server",
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "npx -y -p node@22 node --watch src/index.js",
     "start": "npx -y -p node@22 node src/index.js"
