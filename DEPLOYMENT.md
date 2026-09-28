@@ -7,7 +7,11 @@ This repository supports a separate backend plus frontend deployment on most hos
 Use **New > Blueprint** and select this repository. Render reads `render.yaml` and creates:
 
 - `pgnr-backend`: Node Web Service from `server`
-- `pgnr-dashboard`: Static Site from `client`
+
+Render Blueprints do not create the frontend static site in this setup. Deploy
+the frontend with the GitHub Pages workflow, or create a Render Static Site
+manually with root directory `client`, build command `npm install && npm run
+build`, and publish directory `dist`.
 
 After the backend is created, set `DEFAULT_MC_HOST` to the current Minecraft address and port. For AppleMC:
 

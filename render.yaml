@@ -30,15 +30,3 @@ services:
       - key: OPENAI_API_KEY
         sync: false
 
-  - type: static
-    name: pgnr-dashboard
-    rootDir: client
-    plan: free
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
-    autoDeploy: true
-    envVars:
-      - key: VITE_API_URL
-        sync: false
-      - key: VITE_WS_URL
-        sync: false
