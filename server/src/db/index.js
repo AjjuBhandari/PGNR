@@ -3,7 +3,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const db = new Database(path.join(__dirname, "../../data.sqlite"));
+const databasePath = process.env.DB_PATH || path.join(__dirname, "../../data.sqlite");
+const db = new Database(databasePath);
 
 db.pragma("journal_mode = WAL");
 

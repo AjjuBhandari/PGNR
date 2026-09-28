@@ -6,8 +6,10 @@ services:
       - "4000:4000"
     env_file:
       - ./server/.env
+    environment:
+      DB_PATH: /data/data.sqlite
     volumes:
-      - bot-data:/app/data.sqlite
+      - bot-data:/data
     restart: unless-stopped
 
   client:

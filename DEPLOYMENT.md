@@ -57,6 +57,8 @@ docker compose up -d
 
 The backend requires Node 22 because it uses the native `better-sqlite3` package. Keep `server/.env`, SQLite files, logs, and passwords out of Git. They are already covered by `.gitignore`.
 
+Docker stores SQLite at `/data/data.sqlite` through the named `bot-data` volume. On hosts with a persistent disk, set `DB_PATH` to a file inside that disk, such as `/var/data/data.sqlite`.
+
 ## Other Platforms
 
 For Railway, Fly.io, Render Web Services, or a VPS, deploy `server` as a Node service:
