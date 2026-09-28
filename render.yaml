@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: pgnr-backend
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: MOCK_MODE
+        value: "false"
+      - key: DEFAULT_MC_VERSION
+        value: "1.20.4"
+      - key: MC_AUTH_MODE
+        value: offline
+      - key: MC_TARGET_SERVER
+        value: ""
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: BOT_ENCRYPTION_KEY
+        generateValue: true
+      - key: DEFAULT_MC_HOST
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+
+  - type: static_site
+    name: pgnr-dashboard
+    rootDir: client
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeploy: true
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+      - key: VITE_WS_URL
+        sync: false

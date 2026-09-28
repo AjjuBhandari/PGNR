@@ -55,6 +55,12 @@ docker compose up --build
 
 Frontend on :5173, backend on :4000.
 
+## Hosting files
+
+- `render.yaml` defines the backend Web Service and frontend Static Site for Render.
+- `DEPLOYMENT.md` contains provider-neutral Docker instructions and the required environment variables.
+- The backend is pinned to Node 22 because `better-sqlite3` is a native dependency.
+
 ## Project layout
 
 ```

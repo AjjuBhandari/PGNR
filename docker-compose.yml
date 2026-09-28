@@ -15,9 +15,11 @@ services:
     container_name: mc-bot-client
     ports:
       - "5173:80"
-    environment:
-      - VITE_API_URL=http://localhost:4000/api
-      - VITE_WS_URL=http://localhost:4000
+    build:
+      context: ./client
+      args:
+        VITE_API_URL: http://localhost:4000/api
+        VITE_WS_URL: http://localhost:4000
     depends_on:
       - server
     restart: unless-stopped
