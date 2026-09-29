@@ -16,17 +16,34 @@ services:
       - key: MC_AUTH_MODE
         value: offline
       - key: MC_TARGET_SERVER
-        value: ""
+        sync: false
       - key: ADMIN_USERNAME
         sync: false
       - key: ADMIN_PASSWORD_HASH
         sync: false
       - key: JWT_SECRET
-        generateValue: true
+        sync: false
       - key: BOT_ENCRYPTION_KEY
-        generateValue: true
+        sync: false
       - key: DEFAULT_MC_HOST
+        sync: false
+      - key: AI_PROVIDER
         sync: false
       - key: OPENAI_API_KEY
         sync: false
-
+      - key: GROQ_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: AI_DECISION_INTERVAL_MS
+        value: "3000"
+      - key: MC_LOGIN_TIMEOUT_MS
+        value: "30000"
+      - key: MC_AFK_WARP
+        sync: false
+      - key: MC_TARGET_SERVER_RETRY_MS
+        value: "8000"
+      - key: MC_TARGET_SERVER_MAX_RETRIES
+        value: "5"
+      - key: DISCORD_WEBHOOK_URL
+        sync: false
