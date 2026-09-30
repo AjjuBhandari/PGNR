@@ -5,7 +5,8 @@ let socket: Socket | null = null;
 export function getSocket(): Socket {
   if (!socket) {
     const token = localStorage.getItem("token") || "";
-    socket = io(import.meta.env.VITE_WS_URL || "http://localhost:4000", {
+    const wsUrl = import.meta.env.VITE_WS_URL;
+    socket = io(wsUrl && wsUrl.length > 0 ? wsUrl : undefined, {
       auth: { token },
       autoConnect: true,
     });

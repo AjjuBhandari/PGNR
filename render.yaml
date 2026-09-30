@@ -1,14 +1,15 @@
 services:
   - type: web
-    name: pgnr-backend
+    name: pgnr
     runtime: node
-    rootDir: server
     plan: free
-    buildCommand: npm install
-    startCommand: npm run start
+    buildCommand: npm run build
+    startCommand: npm start
     healthCheckPath: /health
     autoDeploy: true
     envVars:
+      - key: NODE_VERSION
+        value: "22"
       - key: MOCK_MODE
         value: "false"
       - key: DEFAULT_MC_VERSION
@@ -29,4 +30,3 @@ services:
         sync: false
       - key: OPENAI_API_KEY
         sync: false
-

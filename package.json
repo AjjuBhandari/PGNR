@@ -1,0 +1,11 @@
+{
+  "name": "mc-bot-dashboard",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "build": "npm --prefix client ci && npm --prefix client run build && npm --prefix server ci && node scripts/copy-ui.mjs",
+    "start": "npm --prefix server run start"
+  }
+}

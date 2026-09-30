@@ -53,22 +53,21 @@ cp server/.env.example server/.env   # fill in real secrets first
 docker compose up --build
 ```
 
-Frontend on :5173, backend on :4000.
+Dashboard and API together: http://localhost:4000
 
-## GitHub Pages frontend
+## Host on Render
 
-The frontend deploys automatically with `.github/workflows/deploy-pages.yml`.
-Enable **Settings > Pages > Source: GitHub Actions** in the repository. The
-published site is `https://ajjubhandari.github.io/PGNR/`.
+Follow **[RENDER.md](RENDER.md)** for a full walkthrough (delete old API-only services, env vars, password hash, first login).
 
-Set repository variables named `VITE_API_URL` and `VITE_WS_URL` when the backend
-URL is known. The workflow defaults to the current Render backend URL.
+One Web Service serves the UI and API on the same URL so you do not get `Cannot GET /`.
 
-## Hosting files
+Blueprint file: `render.yaml` (repo root, Node 22).
 
-- `render.yaml` defines the backend Web Service and frontend Static Site for Render.
-- `DEPLOYMENT.md` contains provider-neutral Docker instructions and the required environment variables.
-- The backend is pinned to Node 22 because `better-sqlite3` is a native dependency.
+## GitHub Pages (optional extra frontend)
+
+`.github/workflows/deploy-pages.yml` can still publish a static copy at
+`https://ajjubhandari.github.io/PGNR/`. You do not need Pages if you use Render.
+If you keep it, set repo variables `VITE_API_URL` and `VITE_WS_URL` to your Render URL.
 
 ## Project layout
 
