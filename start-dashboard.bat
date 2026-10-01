@@ -2,35 +2,35 @@
 setlocal
 set "ROOT=%~dp0"
 
-where node >nul 2>nul
+where npx >nul 2>nul
 if errorlevel 1 (
-  echo Node.js is not installed. Download it from https://nodejs.org
+  echo npx not found. Install Node.js 22 from https://nodejs.org
   pause
   exit /b 1
 )
 
+echo Installing dependencies with Node 22...
 if not exist "%ROOT%server\node_modules" (
-  echo Installing backend dependencies...
-  pushd "%ROOT%server"
-  call npm install
+  pushd "%ROOT%"
+  call npx --yes -p node@22 -p npm@10 npm install --prefix server
   popd
 )
 
 if not exist "%ROOT%client\node_modules" (
-  echo Installing frontend dependencies...
-  pushd "%ROOT%client"
-  call npm install
+  pushd "%ROOT%"
+  call npx --yes -p node@22 -p npm@10 npm install --prefix client
   popd
 )
 
 echo Starting Minecraft Bot Dashboard...
-start "Minecraft Bot API" /D "%ROOT%server" cmd.exe /k "node src/index.js"
-start "Minecraft Bot UI" /D "%ROOT%client" cmd.exe /k "npm run dev -- --host 0.0.0.0"
+start "Minecraft Bot API" cmd.exe /k "cd /d "%ROOT%" && npx --yes -p node@22 -p npm@10 npm --prefix server run start"
+start "Minecraft Bot UI" cmd.exe /k "cd /d "%ROOT%" && npx --yes -p node@22 -p npm@10 npm --prefix client run dev -- --host 0.0.0.0"
 
-timeout /t 6 >nul
+timeout /t 8 >nul
 start "" "http://localhost:5173/"
 
 echo Backend:   http://localhost:4000
 echo Dashboard: http://localhost:5173
-echo After npm run build at repo root, the dashboard is also at http://localhost:4000
+echo Full built app: http://localhost:4000
+echo Use repo-root build + start if you want the same host as Render.
 endlocal

@@ -17,6 +17,7 @@
     "express": "^4.19.2",
     "express-rate-limit": "^7.4.0",
     "jsonwebtoken": "^9.0.2",
+    "mc-bot-dashboard": "file:..",
     "minecraft-data": "^3.78.0",
     "mineflayer": "^4.23.0",
     "mineflayer-armor-manager": "^2.0.1",

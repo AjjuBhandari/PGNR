@@ -16,8 +16,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = process.env.PUBLIC_DIR || path.join(__dirname, "../public");
 const indexHtml = path.join(publicDir, "index.html");
 
+const frontendUrl = process.env.FRONTEND_URL || "https://ajjubhandari.github.io/PGNR/";
+
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: true,
+  })
+);
 app.use(express.json());
 
 const limiter = rateLimit({ windowMs: 60_000, max: 120 });
