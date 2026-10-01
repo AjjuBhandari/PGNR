@@ -57,9 +57,13 @@ Dashboard and API together: http://localhost:4000
 
 ## Host on Render
 
-Follow **[RENDER.md](RENDER.md)** for a full walkthrough (delete old API-only services, env vars, password hash, first login).
+Follow **[RENDER.md](RENDER.md)** for the full walkthrough.
 
-One Web Service serves the UI and API on the same URL so you do not get `Cannot GET /`.
+Important: delete the old API-only Render service before creating the new one. The new deployment must be a single Web Service at the repo root, and it must build the React UI and copy it into `server/public` before the app starts.
+
+This is what fixes `Cannot GET /`.
+
+Use Node.js 22.x on Render and in local setup. Do not use Node 24 for this project because `better-sqlite3` needs a matching native ABI.
 
 Blueprint file: `render.yaml` (repo root, Node 22).
 

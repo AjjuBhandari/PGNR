@@ -1,10 +1,14 @@
 # Render setup (full app: dashboard + API)
 
-This is the current hosting guide. One Render **Web Service** serves the login page, dashboard, REST API, and Socket.IO on the **same URL**.
+This is the correct hosting guide. One Render **Web Service** serves the login page, dashboard, REST API, and Socket.IO on the **same URL**.
 
 That is what fixes **`Cannot GET /`**. The old setup only ran Express API routes, so opening `https://….onrender.com/` in a browser had no page.
 
+Delete the old Render service first. Then create a new Web Service from the repo root, not from `server/`, and let the root build step generate the UI and copy it into `server/public`.
+
 Do **not** create a separate Render Static Site for `client`. Do **not** point GitHub Pages at this service unless you still want a second frontend.
+
+> Use Node 22.x for all Render and local builds. The project will fail with `better-sqlite3` on Node 24 because the native SQLite binary is not compatible with that runtime.
 
 ---
 
